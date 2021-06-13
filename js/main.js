@@ -1,4 +1,3 @@
-
 /*
 Ejercicio: Generar un HTML  que incorpore 4 archivos js. Cada uno trabajara con un patron de diseno diferente. El cuarto
 archivo se llamara main.js
@@ -17,21 +16,78 @@ el objeto previmente instanciado
 */
 
 
-
 const container = document.querySelector(".container")
 
 
 // se carga la lista del patron modulo
 
-const updateUserList = (userList) => container.appendChild(userList)
+const updateUserList = (userList) => {
+    const moduloTitle = document.createElement("h2")
+    moduloTitle.textContent = "PATRON MODULO"
+    container.appendChild(moduloTitle)
+    container.appendChild(userList)
+}
 app.getUsersNames(updateUserList)
 
 // revelador
 
-console.log(operaciones.addNumers(10, 20))
-console.log(operaciones.subsNumbers(10, 20))
-console.log(operaciones.multNumbers(10, 20))
-console.log(operaciones.divNumbers(10, 20))
+const updateOperaciones = () => {
+    const operations =
+        [operaciones.addNumbers, operaciones.subsNumbers,
+            operaciones.multNumbers, operaciones.divNumbers]
+
+    const x = 20;
+    const y = 10;
+
+    const operacionesContainer = document.createElement("div")
+    operacionesContainer.classList.add("operaciones")
+
+    operations.forEach(oper => {
+        const result = document.createElement("p")
+        result.textContent = `operacion ${oper.name} de ${x} y ${y} resultado: ${oper(x, y)}`
+        operacionesContainer.appendChild(result)
+    })
+
+    const revealTitle = document.createElement("h2")
+    revealTitle.textContent = "PATRON REVELADOR"
+    container.appendChild(revealTitle)
+    container.appendChild(operacionesContainer)
+}
+
+updateOperaciones()
 
 // singleton
+
+
+const empleadoPlantilla = (empleado, empleadoNumero) => {
+    const containerEmpleado = document.createElement("div")
+    containerEmpleado.classList.add("empleado-container")
+    const empTitulo = document.createElement("h2")
+    empTitulo.textContent = empleadoNumero
+    containerEmpleado.appendChild(empTitulo)
+    for (property in empleado) {
+
+        if (empleado.hasOwnProperty(property)) {
+            const prop = document.createElement("p")
+            prop.textContent = `${property}: ${empleado[property]}`
+            containerEmpleado.appendChild(prop)
+        }
+    }
+    return containerEmpleado
+}
+
+const empleado1 = new Empleado()
+const empleado2 = new Empleado()
+
+const empleadosContainer = document.createElement("div")
+empleadosContainer.classList.add("empleados-container")
+const singletonTitle = document.createElement("h2")
+singletonTitle.textContent = "PATRON SINGLETON"
+container.appendChild(singletonTitle)
+empleadosContainer.appendChild(empleadoPlantilla(empleado1, "empleado1"))
+empleadosContainer.appendChild(empleadoPlantilla(empleado2, "empleado2"))
+
+
+container.appendChild(empleadosContainer)
+
 

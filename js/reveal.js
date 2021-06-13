@@ -6,7 +6,7 @@ matematicas (suma, resta multiplicacion division) en un objeto llamado operacion
 
 const operaciones = (function () {
 
-    const addNumers = (x, y) => {
+    const addNumbers = (x, y) => {
         return x + y
     }
 
@@ -25,7 +25,7 @@ const operaciones = (function () {
 
 
     return {
-        addNumers: (x, y) => addNumers(x, y),
+        addNumbers: (x, y) => addNumbers(x, y),
         subsNumbers: (x,y) => subsNumbers(x,y),
         multNumbers: (x,y) => multNumbers(x,y),
         divNumbers: (x,y) => divNumbers(x,y),

@@ -7,23 +7,18 @@ el objeto previmente instanciado
 
     let instance;
 
-
     function empleado() {
-
 
         if (instance === undefined) {
             this.nombre = "Jorge"
             this.apellido = "Perez"
             this.edad = 35
-            this.fechaCreacion = Date()()
+            this.fechaCreacion = Date().slice(4,24)
             instance = this
         }
-
         return instance
-
 
     }
 
-
-    window.empleado = empleado
+    window.Empleado = empleado
 })()
